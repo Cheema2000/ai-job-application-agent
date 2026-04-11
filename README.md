@@ -237,4 +237,8 @@ MIT License — free to use, modify, and distribute.
 
 ---
 
+<<<<<<< HEAD
 *Built with Claude AI · Agent SDK · Python · JobSpy · techNL AI Program*
+=======
+*Built with Claude AI · Agent SDK · Python · JobSpy · techNL AI Program*
+>>>>>>> 004b8383cadf764791c0bbff5bbb951e36db38f3
