@@ -1,0 +1,154 @@
+==============================
+Job Agent Started: Sat Mar 28 01:46:56 NDT 2026
+==============================
+2026-03-28 01:47:07,221 - INFO - JobSpy:Linkedin - finished scraping
+
+🚀 Job Application Agent Starting...
+
+📍 Step 1: Searching for jobs...
+  🔍 Searching for jobs...
+  Found 4 jobs: Data Analyst in Newfoundland, Canada
+  Found 2 jobs: Business Intelligence Analyst in Newfoundland, Canada
+  Found 13 jobs: Data Analyst in Nova Scotia, Canada
+  Found 3 jobs: Business Intelligence Analyst in Nova Scotia, Canada
+  Found 1 jobs: Analytics Engineer in Nova Scotia, Canada
+  Found 16 jobs: Data Analyst in Remote
+  ✅ Real jobs found: 36 scraped, 36 new saved
+  ✅ Job Search Agent done → 36 new jobs found
+
+📝 Step 2: Tailoring resumes with Claude AI...
+  📝 Tailoring resumes for 10 jobs...
+    → Dartmouth - Operations Support Analyst at Miller Waste Systems...
+    ✅ Resume saved → resumes/Resume_Miller_Waste_Systems_in-1a60f.txt
+    → Lead Business Systems Analyst – ERP Record-to-Report at Enterprise Minds Canada INC...
+    ✅ Resume saved → resumes/Resume_Enterprise_Minds_Canada_INC_in-1b160.txt
+    → Financial Analyst, Marketing at Sobeys...
+    ✅ Resume saved → resumes/Resume_Sobeys_in-93b8a.txt
+    → Analyst, Data Visualization (Tableau) at Full Glass Wine Co....
+    ✅ Resume saved → resumes/Resume_Full_Glass_Wine_Co_li-43909.txt
+    → Data Analyst at Microsoft...
+    ✅ Resume saved → resumes/Resume_Microsoft_li-43915.txt
+    → Data Analyst - Business Intelligence at Shopee...
+    ✅ Resume saved → resumes/Resume_Shopee_li-36112.txt
+    → Data Analyst (Stata) | Remote at Crossing Hurdles...
+    ✅ Resume saved → resumes/Resume_Crossing_Hurdles_li-43806.txt
+    → Data Analyst at McAfee...
+    ✅ Resume saved → resumes/Resume_McAfee_li-43798.txt
+    → Data Analyst at Veriforce...
+    ✅ Resume saved → resumes/Resume_Veriforce_li-43909.txt
+    → Data Analyst at MetLife...
+    ✅ Resume saved → resumes/Resume_MetLife_li-43909.txt
+  ✅ Resume Agent done → 10 resumes created
+
+✉️  Step 3: Writing personalized cover letters...
+  ✉️  Writing cover letters for 10 jobs...
+    → Dartmouth - Operations Support Analyst at Miller Waste Systems...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Miller_Waste_Systems_in-1a60f.txt
+    → Lead Business Systems Analyst – ERP Record-to-Report at Enterprise Minds Canada INC...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Enterprise_Minds_Canada_INC_in-1b160.txt
+    → Financial Analyst, Marketing at Sobeys...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Sobeys_in-93b8a.txt
+    → Analyst, Data Visualization (Tableau) at Full Glass Wine Co....
+    ✅ Cover letter saved → cover_letters/CoverLetter_Full_Glass_Wine_Co_li-43909.txt
+    → Data Analyst at Microsoft...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Microsoft_li-43915.txt
+    → Data Analyst - Business Intelligence at Shopee...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Shopee_li-36112.txt
+    → Data Analyst (Stata) | Remote at Crossing Hurdles...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Crossing_Hurdles_li-43806.txt
+    → Data Analyst at McAfee...
+    ✅ Cover letter saved → cover_letters/CoverLetter_McAfee_li-43798.txt
+    → Data Analyst at Veriforce...
+    ✅ Cover letter saved → cover_letters/CoverLetter_Veriforce_li-43909.txt
+    → Data Analyst at MetLife...
+    ✅ Cover letter saved → cover_letters/CoverLetter_MetLife_li-43909.txt
+  ✅ Cover Letter Agent done → 10 letters created
+
+📊 Step 4: Generating daily digest report...
+
+╔══════════════════════════════════════════════════════════════╗
+║           DAILY JOB APPLICATION DIGEST                       ║
+║           March 28, 2026                                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+  📊 TODAY'S SUMMARY
+  ─────────────────────────────────────────────────────────────
+  Jobs found:        36
+  Resumes tailored:  10
+  Cover letters:     10
+  Ready to apply:    10
+
+  🎯 JOBS READY FOR YOU TO APPLY
+  ─────────────────────────────────────────────────────────────
+  ✅ Dartmouth - Operations Support Analyst @ Miller Waste Systems
+     📍 Dartmouth, NS, CA
+     🔗 https://ca.indeed.com/viewjob?jk=1a60f4abf68f6a41
+     📄 resumes/Resume_Miller_Waste_Systems_in-1a60f.txt
+     ✉️  cover_letters/CoverLetter_Miller_Waste_Systems_in-1a60f.txt
+
+  ✅ Lead Business Systems Analyst – ERP Record-to-Report @ Enterprise Minds Canada INC
+     📍 Remote, CA
+     🔗 https://ca.indeed.com/viewjob?jk=1b160122f9bfddd6
+     📄 resumes/Resume_Enterprise_Minds_Canada_INC_in-1b160.txt
+     ✉️  cover_letters/CoverLetter_Enterprise_Minds_Canada_INC_in-1b160.txt
+
+  ✅ Financial Analyst, Marketing        @ Sobeys
+     📍 New Glasgow, NS, CA
+     🔗 https://ca.indeed.com/viewjob?jk=93b8a1b98e1e5e68
+     📄 resumes/Resume_Sobeys_in-93b8a.txt
+     ✉️  cover_letters/CoverLetter_Sobeys_in-93b8a.txt
+
+  ✅ Analyst, Data Visualization (Tableau) @ Full Glass Wine Co.
+     📍 
+     🔗 https://www.linkedin.com/jobs/view/4390996640
+     📄 resumes/Resume_Full_Glass_Wine_Co_li-43909.txt
+     ✉️  cover_letters/CoverLetter_Full_Glass_Wine_Co_li-43909.txt
+
+  ✅ Data Analyst                        @ Microsoft
+     📍 Redmond, WA
+     🔗 https://www.linkedin.com/jobs/view/4391559836
+     📄 resumes/Resume_Microsoft_li-43915.txt
+     ✉️  cover_letters/CoverLetter_Microsoft_li-43915.txt
+
+  ✅ Data Analyst - Business Intelligence @ Shopee
+     📍 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
+     🔗 https://www.linkedin.com/jobs/view/3611203960
+     📄 resumes/Resume_Shopee_li-36112.txt
+     ✉️  cover_letters/CoverLetter_Shopee_li-36112.txt
+
+  ✅ Data Analyst (Stata) | Remote       @ Crossing Hurdles
+     📍 
+     🔗 https://www.linkedin.com/jobs/view/4380604654
+     📄 resumes/Resume_Crossing_Hurdles_li-43806.txt
+     ✉️  cover_letters/CoverLetter_Crossing_Hurdles_li-43806.txt
+
+  ✅ Data Analyst                        @ McAfee
+     📍 Frisco, TX
+     🔗 https://www.linkedin.com/jobs/view/4379891620
+     📄 resumes/Resume_McAfee_li-43798.txt
+     ✉️  cover_letters/CoverLetter_McAfee_li-43798.txt
+
+  ✅ Data Analyst                        @ Veriforce
+     📍 
+     🔗 https://www.linkedin.com/jobs/view/4390997906
+     📄 resumes/Resume_Veriforce_li-43909.txt
+     ✉️  cover_letters/CoverLetter_Veriforce_li-43909.txt
+
+  ✅ Data Analyst                        @ MetLife
+     📍 Tampa, FL
+     🔗 https://www.linkedin.com/jobs/view/4390980917
+     📄 resumes/Resume_MetLife_li-43909.txt
+     ✉️  cover_letters/CoverLetter_MetLife_li-43909.txt
+
+
+  ─────────────────────────────────────────────────────────────
+  📂 Open your digest: reports/JobDigest_2026-03-28.html
+  ─────────────────────────────────────────────────────────────
+  All you need to do: Click "Apply Now" for each job.
+  Your tailored resume + cover letter are already ready. ✓
+╚══════════════════════════════════════════════════════════════╝
+
+💾 HTML Report saved → reports/JobDigest_2026-03-28.html
+   Open it in your browser to see all jobs with Apply buttons!
+
+✅ Completed successfully: Sat Mar 28 01:50:50 NDT 2026

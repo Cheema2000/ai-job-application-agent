@@ -1,0 +1,94 @@
+{
+  "personal": {
+    "name": "Muhammad Hamza",
+    "email": "muhammadhamzacheema786@gmail.com",
+    "phone": "709-691-9412",
+    "linkedin": "linkedin.com/in/muhammad-hamza",
+    "github": "github.com/Cheema2000",
+    "location": "St. John's, Canada"
+  },
+  "target_roles": [
+    "Data Analyst",
+    "Business Intelligence Analyst",
+    "BI Developer",
+    "Data Engineer",
+    "Analytics Engineer",
+    "Reporting Analyst"
+  ],
+  "job_preferences": {
+    "locations": ["Canada", "Remote"],
+    "level": "Entry to Mid Level",
+    "type": "Full-time"
+  },
+  "summary": "Data analyst with hands-on experience building end-to-end ETL pipelines, interactive BI dashboards, and automated reporting tools using Python, SQL, Power BI, and Streamlit. Background in software development adds depth in backend engineering and database optimization. Strong communicator who translates complex data findings into actionable business insights.",
+  "skills": {
+    "languages": ["Python", "SQL", "Kotlin", "JavaScript"],
+    "python_libraries": ["Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "Streamlit", "SQLAlchemy"],
+    "bi_tools": ["Power BI", "Tableau", "Excel"],
+    "excel_skills": ["Pivot Tables", "VLOOKUP", "Macros", "VBA"],
+    "databases": ["MySQL", "SQLite", "Microsoft Fabric", "Google Sheets"],
+    "data_engineering": ["ETL pipeline design", "data cleaning", "query optimization", "schema design", "data validation"],
+    "tools": ["GitHub", "Jupyter Notebook", "Android Studio", "HTML/CSS"]
+  },
+  "projects": [
+    {
+      "name": "Financial Performance Data Pipeline",
+      "tech": ["Python", "Pandas", "Plotly", "Streamlit", "SQLite"],
+      "github": "github/financial-pipeline",
+      "highlights": [
+        "Built end-to-end ETL pipeline processing 12 months of financial data across 4 departments, eliminating manual reporting effort",
+        "Developed data validation layer that cleaned and standardized 500+ records, resolving formatting errors and null inconsistencies",
+        "Designed normalized SQL schema with complex joins to support multi-dimensional financial querying",
+        "Delivered interactive Streamlit dashboard with KPI cards (revenue, profit, margins), dual-axis trend charts, department comparisons, MoM variance analysis, and dynamic date/department filters"
+      ]
+    },
+    {
+      "name": "Payroll Data Validation & Reporting System",
+      "tech": ["Python", "Pandas", "Plotly", "JavaScript", "HTML/CSS"],
+      "github": "github/payroll-validation",
+      "highlights": [
+        "Cleaned and processed 1,030 employee payroll records from raw CSV — handling currency formatting, null values, and type conversions",
+        "Calculated gross pay, tax deductions (20%), and net pay for full automated payroll reporting across all employee types",
+        "Built interactive HTML dashboard with real-time department/employment-type filters, full-text search, 4 Plotly charts, paginated employee table, and CSV export functionality"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Developer",
+      "company": "DigiCare",
+      "location": "Pakistan",
+      "period": "2022 – 2023",
+      "highlights": [
+        "Optimized database queries through indexing and query restructuring, improving data retrieval speed by 30%",
+        "Built backend APIs to process structured datasets and support data reporting workflows for business operations",
+        "Automated data validation scripts, reducing manual data entry errors by 25% across key pipelines",
+        "Analyzed user behavior data to identify performance bottlenecks and drive targeted application improvements"
+      ]
+    },
+    {
+      "title": "Android Developer",
+      "company": "Lads Technologies",
+      "location": "Islamabad, Pakistan",
+      "period": "2022",
+      "highlights": [
+        "Developed Android applications in Kotlin integrated with REST APIs for real-time data fetching and display",
+        "Built in-app dashboards to track and visualize user engagement metrics, supporting product team decisions"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Computer Engineering",
+      "institution": "Memorial University of Newfoundland",
+      "location": "St. John's, Canada",
+      "year": "2025"
+    },
+    {
+      "degree": "Bachelor of Information Technology",
+      "institution": "Arid University",
+      "location": "Islamabad, Pakistan",
+      "year": "2022"
+    }
+  ]
+}

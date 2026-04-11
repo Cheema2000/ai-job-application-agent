@@ -1,0 +1,7 @@
+.env
+data/applications.db
+resumes/
+cover_letters/
+reports/
+__pycache__/
+*.pyc
