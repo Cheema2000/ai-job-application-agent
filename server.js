@@ -157,6 +157,16 @@ app.get('/files/*', (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Serve React build in production  (npm run build inside client/)
+// ---------------------------------------------------------------------------
+
+const clientDist = path.join(__dirname, 'client', 'dist');
+if (require('fs').existsSync(clientDist)) {
+  app.use(express.static(clientDist));
+  app.get('*', (req, res) => res.sendFile(path.join(clientDist, 'index.html')));
+}
+
+// ---------------------------------------------------------------------------
 // WebSocket: send a snapshot of all runs to each new client
 // ---------------------------------------------------------------------------
 

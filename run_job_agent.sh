@@ -2,8 +2,7 @@
 # Daily Job Agent Runner
 # Runs every morning at 8:00 AM automatically — even when Claude Code is closed
 
-export ANTHROPIC_API_KEY="your api key"
-export PATH="/opt/anaconda3/bin:/usr/local/bin:/usr/bin:/bin"
+export ANTHROPIC_API_KEY="Enter your api key here"
 
 cd /Users/hamza/Documents/Job-Agent
 
