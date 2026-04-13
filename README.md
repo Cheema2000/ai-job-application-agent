@@ -15,12 +15,12 @@
 ## 📸 Screenshots
 
 ### Live Dashboard — Real-Time Job Pipeline
-![Dashboard](D3_AS_IS_diagram.png)
+![Dashboard](screenshots/dashboard.png)
 
 > 143 jobs scraped, relevance-scored, and filtered in real time. The live terminal feed streams every pipeline step as it executes.
 
 ### Document Preview — AI-Tailored Resume + Cover Letter
-![Preview Drawer](D3_AS_IS_diagram.png)
+![Preview Drawer](screenshots/preview.png)
 
 > Side-by-side preview of the AI-generated resume and cover letter for each job. One click to Apply Now.
 
