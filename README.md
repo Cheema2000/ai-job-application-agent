@@ -1,12 +1,28 @@
-# 🤖 AI Job Application Agent
+# ⚡ Job Agent — AI-Powered Job Application Platform
 
-> Automated job search, AI-tailored resumes, and personalized cover letters — fully hands-free, every morning at 8 AM.
+> A full-stack AI platform that scrapes LinkedIn & Indeed, tailors your resume per company using Claude AI, writes personalised cover letters, and streams everything live to a React dashboard — fully automated, every morning at 8 AM.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
+![React](https://img.shields.io/badge/React-TypeScript-61DAFB?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-REST_+_WebSocket-339933?style=flat-square&logo=node.js)
 ![Claude AI](https://img.shields.io/badge/Claude_AI-Anthropic-purple?style=flat-square)
 ![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey?style=flat-square)
+![Vite](https://img.shields.io/badge/Build-Vite-646CFF?style=flat-square&logo=vite)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)
+
+---
+
+## 📸 Screenshots
+
+### Live Dashboard — Real-Time Job Pipeline
+![Dashboard](D3_AS_IS_diagram.png)
+
+> 143 jobs scraped, relevance-scored, and filtered in real time. The live terminal feed streams every pipeline step as it executes.
+
+### Document Preview — AI-Tailored Resume + Cover Letter
+![Preview Drawer](D3_AS_IS_diagram.png)
+
+> Side-by-side preview of the AI-generated resume and cover letter for each job. One click to Apply Now.
 
 ---
 
@@ -14,119 +30,136 @@
 
 Job searching in 2026 is broken:
 
-- **76%** of resumes never reach a human reviewer — ATS filters them out
-- **2–3 hours** wasted daily manually searching LinkedIn, Indeed, and other job boards
-- Generic resumes sent to every job result in low keyword match scores and fewer callbacks
+- **2–3 hours** wasted daily manually searching LinkedIn, Indeed, and other boards
+- **76%** of resumes never reach a human reviewer — ATS filters them out first
+- Generic resumes sent to every job result in low keyword match scores
 - Rewriting cover letters from scratch for every application is tedious and inconsistent
 
 ---
 
 ## 💡 The Solution
 
-A fully automated, AI-powered job application pipeline that runs every morning at 8 AM with **zero manual involvement**.
-
-One command. Fully automated. Every morning.
+A full-stack AI platform that does everything automatically — scraping, scoring, tailoring, and previewing — while you watch it happen live in your browser.
 
 ```bash
-bash run_job_agent.sh
+# One click in the dashboard, or schedule it:
+0 8 * * * node server.js --trigger
 ```
 
-In ~7 minutes, the agent:
-1. Scrapes LinkedIn & Indeed for jobs posted in the last 24 hours
-2. Filters by location (Newfoundland, Nova Scotia, Remote Canada)
-3. Scores each job by relevance to your profile
-4. Generates a tailored resume per company using Claude AI
-5. Writes a personalized cover letter per role
-6. Delivers a beautiful HTML digest with **Apply Now** buttons — ready to click
+In ~7 minutes the platform:
+1. Scrapes LinkedIn & Indeed across 14 query/location combinations
+2. Scores each job by keyword relevance (out of 20)
+3. Sends the top 10 jobs to Claude AI for resume tailoring
+4. Writes a personalised cover letter per company
+5. Streams every step live to your React dashboard via WebSocket
+6. Displays all results in a searchable, filterable job board with document preview
 
 ---
 
-## 🏗️ System Architecture — 5 Layers
+## 🏗️ Architecture — 4 Layers
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│  Layer 5: Agent SDK — Scheduled task, runs at 8 AM daily │
-├─────────────────────────────────────────────────────────┤
-│  Layer 4: Sub-Agents — 3 agents running in PARALLEL      │
-│           🔍 Job Search │ 📝 Resume Tailor │ ✉️ Cover Letter│
-├─────────────────────────────────────────────────────────┤
-│  Layer 3: Skills (SKILL.md) — Analysis process defined   │
-│           Monitor → Explore → Craft → Impact             │
-├─────────────────────────────────────────────────────────┤
-│  Layer 2: MCP — LinkedIn, Indeed, SQLite via JobSpy      │
-├─────────────────────────────────────────────────────────┤
-│  Layer 1: Tool Calling — File I/O, Python scripts, DB    │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│  Layer 4: React + TypeScript Frontend (Vite)                     │
+│  JobGrid · JobCard · PreviewDrawer · RunFeed · WebSocket client  │
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 3: Node.js API Server                                     │
+│  POST /runs/trigger · GET /runs/:id · GET /jobs · GET /files/*   │
+│  WebSocket — streams stdout/stderr from Python process live      │
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 2: Candidate Profile                                      │
+│  data/hamza_profile.json — single source of truth for all prompts│
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 1: Python AI Agent Pipeline                               │
+│  Manager → Job Search Agent → Resume Tailor → Cover Letter Writer│
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## ⚙️ How It Works — Daily Pipeline
+## ⚙️ How It Works
 
-```
-STEP 1          STEP 2              STEP 3            STEP 4
-🔍 Job Search   📝 Resume Tailor    ✉️ Cover Letter   📊 HTML Digest
-─────────────   ────────────────    ───────────────   ──────────────
-LinkedIn &      Claude AI matches   Personalized      Report with
-Indeed scrape   your keywords to    letter per        Apply Now
-Last 24 hours   each job posting    company using     buttons opens
-NL + NS +       Reorders skills     your real         in browser
-Remote jobs     by match score      achievements
-                Highlights best     References
-                projects            specific role
-                Saves as .txt       Professional
-                                    tone, .txt saved
-```
+### Layer 1 — Python Agent Pipeline
 
-**⏱ Total runtime: ~7 minutes | 🤖 Human involvement: Zero | 📅 Schedule: Every day at 8:00 AM**
+| Agent | What It Does |
+|-------|-------------|
+| `manager_agent.py` | Orchestrator — runs the full pipeline sequentially, creates output directories, streams structured logs |
+| `agent_job_search.py` | Scrapes LinkedIn & Indeed via JobSpy across 14 query/location combos; scores jobs by keyword relevance; saves to SQLite with duplicate prevention |
+| `agent_resume_tailor.py` | Reads top 10 jobs from SQLite; sends each to Claude AI with your full profile; Claude rewrites summary, reorders skills, highlights relevant projects |
+| `agent_cover_letter.py` | Writes a personalised cover letter per job — opens with a hook, references two achievements with numbers, names the company specifically |
 
----
+**Search coverage:**
+- AI Engineer, LLM Engineer, Full Stack Developer — Remote
+- Software Engineer, Data Analyst — Newfoundland + Nova Scotia
+- Business Intelligence Analyst, Analytics Engineer — Canada
 
-## 🧠 Sub-Agents Running in Parallel
+**Relevance scoring keywords:** `llm` · `agent` · `react` · `typescript` · `node.js` · `aws` · `python` · `sql` · `power bi` · `claude` · `anthropic`
 
-The Manager Agent orchestrates 3 specialized sub-agents simultaneously — not sequentially:
+### Layer 2 — Candidate Profile
 
-| Sub-Agent | What It Does |
+`data/hamza_profile.json` — single source of truth fed into every Claude prompt:
+- Target roles, skills, projects, experience, education
+- Used by both resume tailor and cover letter agents to ensure consistency
+
+### Layer 3 — Node.js API Server
+
+| Endpoint | What It Does |
+|----------|-------------|
+| `POST /runs/trigger` | Spawns `manager_agent.py` as child process, assigns UUID run ID, returns immediately |
+| `GET /runs/:id` | Returns run status (running/completed/failed), full log array, timestamps |
+| `GET /jobs` | Reads SQLite — all jobs joined with resume and cover letter paths, ordered by relevance |
+| `GET /files/*` | Serves resume and cover letter `.txt` files to frontend preview |
+| `ws://host/ws` | Streams every stdout/stderr line from Python in real time; sends run snapshot on connect |
+
+Uses Node's built-in `node:sqlite` — no native compilation needed. In-memory `Map` tracks all runs per session.
+
+### Layer 4 — React Frontend
+
+| Component | What It Does |
 |-----------|-------------|
-| 🔍 **Job Search Agent** | Scrapes LinkedIn & Indeed, filters by NL/NS/Remote, scores by relevance, saves to SQLite with duplicate prevention |
-| 📝 **Resume Tailor Agent** | Reads job description, rewrites Summary section, reorders skills by match, highlights most relevant projects |
-| ✉️ **Cover Letter Agent** | Personalizes per company, references real achievements, mentions specific role details, professional tone |
+| `App.tsx` | Root — manages WebSocket, job list state, run status, auto-reconnect |
+| `RunFeed.tsx` | Dark terminal sidebar — colour-coded live logs (blue=steps, green=success, red=error, yellow=warning), auto-scrolls, animating status badge |
+| `JobGrid.tsx` | Searchable job board — filters across title, company, location simultaneously |
+| `JobCard.tsx` | Cards with relevance score bar (gradient, out of 20), source badge, pipeline stage indicator |
+| `PreviewDrawer.tsx` | Side-by-side Resume + Cover Letter preview, spring animation, Apply Now → direct link, Escape to close |
 
-All results are combined by the Manager Agent into one HTML report.
+**Filter pills with live counts:**
+- `All 143` · `New 132` · `Resume Ready` · `Apply Ready 11`
 
 ---
 
-## 📊 Live Results — First Run (March 24, 2026)
-
-*Real data, not a demo.*
+## 📊 Live Results — Real Run (April 13, 2026)
 
 | Metric | Result |
 |--------|--------|
-| Jobs Scraped | **79** (LinkedIn + Indeed) |
-| NL + NS Jobs | **16** after location filter |
-| AI-Tailored Resumes | **10** (one per company) |
-| Personalized Cover Letters | **10** (one per role) |
-| Total Runtime | **~7 minutes** |
+| Jobs Scraped | **143** total (92 new this run) |
+| Search Combinations | **14** query/location pairs |
+| AI-Tailored Resumes | **10** (one per top-scored job) |
+| Personalised Cover Letters | **10** (one per company) |
+| Apply Ready | **11** jobs with full document set |
+| Runtime | **~7 minutes** end-to-end |
 
-**Companies Found:** Scotiabank, RBC, EY, City of St. John's, EfficiencyOne
-
-**Locations Covered:** St. John's NL · Halifax NS · Dartmouth NS · Remote (Canada)
+**Sample jobs found this run:**
+- Verafin — Software Developer Specialist (St. John's, NL) ← local!
+- AI/ML Engineer — YO IT Consulting (Remote)
+- Data & Reporting Analyst — EfficiencyOne (Dartmouth, NS)
+- Senior Backend Engineer — Releady (Remote)
+- Junior Data Scientist — Liferaft (Halifax, NS)
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| Core Logic | Python, Pandas, requests, json | Agent orchestration & data handling |
-| AI Engine | Claude AI (Anthropic SDK) | Resume tailoring, cover letter generation |
+| Frontend | React 18, TypeScript, Vite | Job dashboard, document preview, live feed |
+| Styling | Plain CSS | Zero framework dependency |
+| API Server | Node.js, built-in `node:sqlite` | REST endpoints, WebSocket streaming |
+| AI Engine | Claude AI (Anthropic SDK) | Resume tailoring, cover letter writing |
 | Job Scraping | JobSpy | LinkedIn & Indeed real-time scraping |
-| Database | SQLite | Job tracker, application history, duplicate prevention |
-| Scheduling | Agent SDK (cron-style) | Automated 8 AM daily trigger |
-| Output | HTML Report | Daily digest with Apply Now buttons |
-| Shell | Bash (run_job_agent.sh) | One-command launcher |
-
-*Fully open-source stack — reproducible and deployable anywhere.*
+| Database | SQLite | Job storage, deduplication, run history |
+| Pipeline | Python, Pandas | Agent orchestration, scoring, file management |
+| Scheduling | cron | Automated 8 AM daily trigger |
 
 ---
 
@@ -134,21 +167,27 @@ All results are combined by the Manager Agent into one HTML report.
 
 ```
 ai-job-application-agent/
+├── client/
+│   └── src/
+│       ├── App.tsx              # Root — WebSocket, state, run management
+│       ├── RunFeed.tsx          # Live terminal sidebar
+│       ├── JobGrid.tsx          # Searchable + filterable job board
+│       ├── JobCard.tsx          # Individual job card with relevance score
+│       └── PreviewDrawer.tsx    # Side-by-side resume + cover letter preview
 ├── agents/
-│   ├── manager_agent.py        # Orchestrates all sub-agents
-│   ├── job_search_agent.py     # LinkedIn & Indeed scraping
-│   ├── resume_tailor_agent.py  # Claude AI resume customization
-│   └── cover_letter_agent.py  # Claude AI cover letter generation
+│   ├── manager_agent.py         # Pipeline orchestrator
+│   ├── agent_job_search.py      # LinkedIn & Indeed scraper + scorer
+│   ├── agent_resume_tailor.py   # Claude AI resume customisation
+│   └── agent_cover_letter.py    # Claude AI cover letter generation
 ├── data/
-│   ├── jobs.db                 # SQLite job tracker database
-│   ├── resumes/                # AI-tailored resumes (per company)
-│   └── cover_letters/          # Personalized cover letters (per role)
-├── logs/                       # Daily run logs
-├── D1_Project_Overview.pdf     # Project documentation
-├── D2_STAKEHOLDER REGISTER.pdf # Stakeholder analysis
-├── D3_AsIs_Job_Search_Process.png # Current state process diagram
-├── run_job_agent.sh            # One-command launcher
-└── SKILL.md                    # Agent analysis process definition
+│   ├── hamza_profile.json       # Candidate profile — fed into all Claude prompts
+│   └── jobs.db                  # SQLite job tracker
+├── reports/                     # Generated HTML digests
+├── resumes/                     # AI-tailored resumes (.txt per job)
+├── cover_letters/               # Personalised cover letters (.txt per job)
+├── server.js                    # Node.js API + WebSocket server
+├── run_job_agent.sh             # One-command launcher
+└── README.md
 ```
 
 ---
@@ -159,64 +198,58 @@ ai-job-application-agent/
 
 ```bash
 Python 3.10+
-pip install anthropic jobspy pandas sqlite3
-export ANTHROPIC_API_KEY=your_key_here
+Node.js 20+
 ```
 
-### Run
+### Install & Run
 
 ```bash
+# Clone
 git clone https://github.com/Cheema2000/ai-job-application-agent.git
 cd ai-job-application-agent
-bash run_job_agent.sh
+
+# Python dependencies
+pip install anthropic jobspy pandas
+
+# Set your API key
+export ANTHROPIC_API_KEY=your_key_here
+
+# Node dependencies
+npm install
+
+# Start the server
+node server.js
+
+# Open dashboard
+open http://localhost:3000
 ```
 
 ### Schedule Daily (Optional)
 
-Add to crontab to run automatically at 8 AM:
-
 ```bash
-0 8 * * * /path/to/run_job_agent.sh
+# Runs automatically at 8 AM every day
+0 8 * * * cd /path/to/ai-job-application-agent && node server.js --trigger
 ```
-
----
-
-## 📈 Bonus Project: BI Intelligence Agent
-
-Included in this repo is a second agent — a **Business Intelligence Agent** that runs every Monday morning:
-
-- Scrapes 2,000 rows of sales data from SQLite
-- Runs **4 sub-agents in parallel**: Revenue · Products · Regions · Anomalies
-- Detects anomalies, underperformers, and revenue trends automatically
-- Generates an executive report with zero manual work
-
-**Real Results from First Run:**
-- Revenue: $396K this month (+10.1% MoM)
-- Anomalies: 16 detected (9 Critical)
-- Top Region: South ($153K)
 
 ---
 
 ## 🔮 Planned Improvements
 
-1. **📧 Email Delivery** — Auto-send HTML digest to inbox every morning
-2. **🔔 Slack Alerts** — Instant notification for high-match jobs (>80% score)
-3. **📈 Application Tracker Dashboard** — Track response rates and interview callbacks
-4. **🌍 More Locations** — Expand to Toronto, Vancouver, and all Remote Canada roles
+1. **📧 Email Delivery** — Send HTML digest to inbox at 8 AM automatically
+2. **🔔 Slack Alerts** — Instant ping for jobs scoring above 35 relevance
+3. **📈 Application Tracker** — Track response rates, interview callbacks, offer rate
+4. **🌍 More Locations** — Expand beyond NL/NS to Toronto, Vancouver, all Remote Canada
+5. **🔐 Auth Layer** — Multi-user support with per-profile job pipelines
+6. **📊 Analytics Dashboard** — Weekly job market trends, keyword frequency, company activity
 
 ---
 
-## 🎓 Course Concepts Applied
+## 🎓 Built With
 
-Built as the capstone project for the **AI for Data Science & Analytics** program by [techNL](https://technl.ca) / Get Building (2026):
-
-| Layer | Concept | Applied |
-|-------|---------|---------|
-| Layer 1 | Tool Calling | Python scripts read files, query SQLite, write JSON results |
-| Layer 2 | MCP | Connected to LinkedIn, Indeed, SQLite via JobSpy & Anthropic SDK |
-| Layer 3 | Skills | SKILL.md defines Monitor → Explore → Craft → Impact process |
-| Layer 4 | Sub-Agents | 3 agents run in parallel, Manager combines results |
-| Layer 5 | Agent SDK | Scheduled task runs every day at 8:00 AM, zero human input |
+- **[Anthropic Claude AI](https://anthropic.com)** — Resume tailoring and cover letter generation
+- **[JobSpy](https://github.com/Bunsly/JobSpy)** — LinkedIn & Indeed scraping
+- **[React](https://react.dev)** + **[Vite](https://vitejs.dev)** — Frontend dashboard
+- **techNL AI for Data Science & Analytics** program — Project inspiration
 
 ---
 
@@ -224,6 +257,7 @@ Built as the capstone project for the **AI for Data Science & Analytics** progra
 
 **Muhammad Hamza**
 M.A.Sc. Computer Engineering — Memorial University of Newfoundland
+St. John's, NL, Canada
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/muhammad-hamza-74035518a)
 [![GitHub](https://img.shields.io/badge/GitHub-Cheema2000-black?style=flat-square&logo=github)](https://github.com/Cheema2000)
@@ -237,8 +271,4 @@ MIT License — free to use, modify, and distribute.
 
 ---
 
-<<<<<<< HEAD
-*Built with Claude AI · Agent SDK · Python · JobSpy · techNL AI Program*
-=======
-*Built with Claude AI · Agent SDK · Python · JobSpy · techNL AI Program*
->>>>>>> 004b8383cadf764791c0bbff5bbb951e36db38f3
+*Built with Claude AI · React · TypeScript · Node.js · Python · JobSpy · Vite*
