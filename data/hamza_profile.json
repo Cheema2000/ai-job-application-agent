@@ -8,6 +8,10 @@
     "location": "St. John's, Canada"
   },
   "target_roles": [
+    "Full-Stack Developer",
+    "AI Engineer",
+    "LLM Engineer",
+    "Software Engineer",
     "Data Analyst",
     "Business Intelligence Analyst",
     "BI Developer",
@@ -20,17 +24,30 @@
     "level": "Entry to Mid Level",
     "type": "Full-time"
   },
-  "summary": "Data analyst with hands-on experience building end-to-end ETL pipelines, interactive BI dashboards, and automated reporting tools using Python, SQL, Power BI, and Streamlit. Background in software development adds depth in backend engineering and database optimization. Strong communicator who translates complex data findings into actionable business insights.",
+  "summary": "Software engineer with hands-on experience building agentic AI systems, LLM-powered pipelines, and full-stack data applications. Shipped a multi-agent job application system using Claude AI and the Anthropic SDK — orchestrating parallel sub-agents for real-time job scraping, resume tailoring, and cover letter generation. Background spans backend API development, ETL pipeline design, and interactive dashboards. Fluent with AI coding tools (Claude Code, Cursor) and opinionated about how AI changes the way teams build software.",
   "skills": {
-    "languages": ["Python", "SQL", "Kotlin", "JavaScript"],
-    "python_libraries": ["Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "Streamlit", "SQLAlchemy"],
+    "ai_ml": ["LLM integration (Claude API / Anthropic SDK)", "Prompt engineering", "Agent orchestration", "Multi-agent systems", "Tool use / function calling", "RAG (Retrieval-Augmented Generation)"],
+    "languages": ["Python", "JavaScript", "TypeScript", "SQL", "Kotlin"],
+    "frontend": ["React", "HTML/CSS", "Streamlit"],
+    "backend": ["Node.js", "REST APIs", "SQLite", "MySQL"],
+    "python_libraries": ["Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "SQLAlchemy"],
     "bi_tools": ["Power BI", "Tableau", "Excel"],
-    "excel_skills": ["Pivot Tables", "VLOOKUP", "Macros", "VBA"],
-    "databases": ["MySQL", "SQLite", "Microsoft Fabric", "Google Sheets"],
     "data_engineering": ["ETL pipeline design", "data cleaning", "query optimization", "schema design", "data validation"],
-    "tools": ["GitHub", "Jupyter Notebook", "Android Studio", "HTML/CSS"]
+    "tools": ["GitHub", "Jupyter Notebook", "Android Studio", "Claude Code", "Cursor"]
   },
   "projects": [
+    {
+      "name": "AI Job Application Agent",
+      "tech": ["Python", "Claude API", "Anthropic SDK", "SQLite", "JobSpy", "HTML/CSS"],
+      "github": "github.com/Cheema2000/ai-job-application-agent",
+      "highlights": [
+        "Built a production multi-agent system that runs every morning at 8 AM — zero human involvement",
+        "Orchestrated 3 parallel sub-agents (Job Search, Resume Tailor, Cover Letter) via a Manager Agent using the Anthropic SDK",
+        "Engineered prompts for Claude AI to tailor resumes and cover letters per job description at scale — 10 tailored documents in ~7 minutes",
+        "Integrated real-time job scraping (LinkedIn + Indeed via JobSpy) with SQLite deduplication and relevance scoring",
+        "Generated a daily HTML digest with Apply Now buttons delivered automatically each morning"
+      ]
+    },
     {
       "name": "Financial Performance Data Pipeline",
       "tech": ["Python", "Pandas", "Plotly", "Streamlit", "SQLite"],

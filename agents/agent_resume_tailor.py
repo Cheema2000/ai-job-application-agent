@@ -53,10 +53,12 @@ GitHub: {profile['personal']['github']}
 Summary: {profile['summary']}
 
 Skills:
+- AI/LLM: {', '.join(profile['skills'].get('ai_ml', []))}
 - Languages: {', '.join(profile['skills']['languages'])}
-- Python: {', '.join(profile['skills']['python_libraries'])}
+- Frontend: {', '.join(profile['skills'].get('frontend', []))}
+- Backend: {', '.join(profile['skills'].get('backend', []))}
+- Python Libraries: {', '.join(profile['skills']['python_libraries'])}
 - BI Tools: {', '.join(profile['skills']['bi_tools'])}
-- Databases: {', '.join(profile['skills']['databases'])}
 - Data Engineering: {', '.join(profile['skills']['data_engineering'])}
 
 Projects:
