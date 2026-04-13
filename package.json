@@ -1,9 +1,11 @@
 {
   "name": "job-agent",
   "version": "1.0.0",
-  "description": "",
-  "main": "presentation.js",
+  "description": "AI-powered job application agent with REST + WebSocket API",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +13,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "pptxgenjs": "^4.0.1"
+    "express": "^4.18.3",
+    "pptxgenjs": "^4.0.1",
+    "ws": "^8.16.0"
   }
 }

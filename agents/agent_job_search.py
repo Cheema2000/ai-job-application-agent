@@ -12,12 +12,20 @@ DB = "data/applications.db"
 
 # Jobs to search for based on Hamza's profile
 SEARCH_QUERIES = [
+    # AI / LLM / Agentic roles — Remote-first (strongest match for job description)
+    {"title": "AI Engineer",                  "location": "Remote"},
+    {"title": "LLM Engineer",                 "location": "Remote"},
+    {"title": "Full Stack Developer AI",      "location": "Remote"},
+    {"title": "Full Stack Engineer",          "location": "Remote"},
+    {"title": "Software Engineer LLM",        "location": "Remote"},
+    # Local roles in NL / NS
+    {"title": "Full Stack Developer",         "location": "Newfoundland, Canada"},
+    {"title": "Software Engineer",            "location": "Newfoundland, Canada"},
     {"title": "Data Analyst",                 "location": "Newfoundland, Canada"},
     {"title": "Business Intelligence Analyst","location": "Newfoundland, Canada"},
-    {"title": "BI Developer",                 "location": "Newfoundland, Canada"},
+    {"title": "Full Stack Developer",         "location": "Nova Scotia, Canada"},
+    {"title": "Software Engineer",            "location": "Nova Scotia, Canada"},
     {"title": "Data Analyst",                 "location": "Nova Scotia, Canada"},
-    {"title": "Business Intelligence Analyst","location": "Nova Scotia, Canada"},
-    {"title": "BI Developer",                 "location": "Nova Scotia, Canada"},
     {"title": "Analytics Engineer",           "location": "Nova Scotia, Canada"},
     {"title": "Data Analyst",                 "location": "Remote"},
 ]
@@ -62,13 +70,23 @@ def score_job(title, description):
 
     # High-value keywords for Hamza
     high_value = [
+        # AI / LLM / Agentic
+        "llm", "agent", "agentic", "claude", "openai", "anthropic",
+        "prompt engineering", "rag", "retrieval augmented", "tool use",
+        "langchain", "langgraph", "ai engineer", "llm engineer",
+        # Full-stack
+        "react", "typescript", "node.js", "nodejs", "full stack", "fullstack",
+        "full-stack", "aws",
+        # Data
         "python", "sql", "power bi", "tableau", "etl",
         "data analyst", "bi analyst", "data pipeline",
         "streamlit", "pandas", "dashboard", "reporting"
     ]
     medium_value = [
+        "javascript", "rest api", "api", "backend", "frontend",
         "excel", "visualization", "analytics", "mysql",
-        "data cleaning", "kpi", "insights", "data engineer"
+        "data cleaning", "kpi", "insights", "data engineer",
+        "machine learning", "ml", "ai", "automation"
     ]
 
     for kw in high_value:

@@ -50,14 +50,14 @@ Write a professional, personalized cover letter that:
 === CANDIDATE ===
 Name: {profile['personal']['name']}
 Current: Masters in Computer Engineering, Memorial University of Newfoundland (2025)
-Background: Data Analyst with Python, SQL, Power BI, ETL pipelines, Streamlit dashboards
+Background: Software engineer with hands-on experience building agentic AI systems, LLM-powered pipelines, and full-stack data applications. Fluent with AI coding tools (Claude Code, Cursor).
 
 Key Achievements:
+- Built a production multi-agent job application system using Claude AI (Anthropic SDK) — 3 sub-agents running in parallel, orchestrated by a Manager Agent, fully automated at 8 AM daily
+- Engineered prompts at scale: 10 tailored resumes + cover letters generated per run in ~7 minutes
+- Integrated real-time job scraping (LinkedIn + Indeed), SQLite deduplication, and relevance scoring into one agentic pipeline
 - Built ETL pipeline processing 12 months of financial data across 4 departments (Python, Pandas, SQLite)
-- Created Streamlit dashboard with KPI cards, MoM variance analysis, dynamic filters
-- Cleaned and processed 1,030 employee payroll records with full automated reporting
-- Improved database query speed by 30% through indexing at DigiCare
-- Reduced manual data entry errors by 25% through automated validation scripts
+- Improved database query speed by 30% through indexing at DigiCare; reduced data entry errors by 25% via automated validation
 
 === TARGET JOB ===
 Title: {job_title}
